@@ -1,0 +1,121 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App | HTML & CSS & JS</title>
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="css/all.min.css" />
+    <!-- MY STYLE FILE -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="info">
+        <h1 class="title">Quiz App</h1>
+      </div>
+      <div class="category-container">
+        <div class="info">
+          <h1 class="title">Quiz App</h1>
+        </div>
+        <h2>Choose Category</h2>
+
+        <div class="box-categories">
+          <div class="category" data-category="18">
+            <i class="fa-solid fa-palette"></i>
+            <p>Computer Science</p>
+          </div>
+          <div class="category" data-category="21">
+            <i class="fa-solid fa-dumbbell"></i>
+            <p>Sports</p>
+          </div>
+          <div class="category" data-category="22">
+            <i class="fa-solid fa-book-atlas"></i>
+            <p>Geography</p>
+          </div>
+          <div class="category" data-category="23">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <p>History</p>
+          </div>
+          <div class="category" data-category="24">
+            <i class="fa-solid fa-landmark-dome"></i>
+            <p>Politics</p>
+          </div>
+          <div class="category" data-category="27">
+            <i class="fa-solid fa-dragon"></i>
+            <p>Animals</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="difficulty-container">
+        <div class="info">
+          <h1 class="title">Quiz App</h1>
+        </div>
+        <h2>Choose Difficulty</h2>
+
+        <div class="box-difficulty">
+          <div class="difficulty" data-difficulty="easy">
+            <p>Easy</p>
+          </div>
+          <div class="difficulty" data-difficulty="medium">
+            <p>Medium</p>
+          </div>
+          <div class="difficulty" data-difficulty="hard">
+            <p>Hard</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="questions-body disable">
+        <div class="question-screen">
+          <p class="question"></p>
+        </div>
+        <div class="answers">
+          <div class="row">
+            <div class="col">
+              <span>A- </span>
+              <p class="answer"></p>
+            </div>
+            <div class="col">
+              <span>B- </span>
+              <p class="answer"></p>
+            </div>
+          </div>
+          <div class="time"></div>
+          <div class="row">
+            <div class="col">
+              <span>C- </span>
+              <p class="answer"></p>
+            </div>
+            <div class="col">
+              <span>D- </span>
+              <p class="answer"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="game-over">
+      <h2>The End</h2>
+      <span class="total-questions">Total questions: 10</span>
+      <span class="correct-num">Correct Answers: 9</span>
+      <span class="wrong-num">Wrong answer: 4</span>
+
+      <button class="btn-restart">Restart</button>
+    </div>
+
+    <!-- FONT AWESOME -->
+    <script src="js/all.min.js"></script>
+    <!-- MY SCRIPT FILE -->
+    <script src="js/main.js"></script>
+  </body>
+</html>
