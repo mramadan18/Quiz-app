@@ -11,6 +11,7 @@ const time = document.querySelector(".time");
 const wrongNumber = document.querySelector(".wrong-num");
 const gameEnd = document.querySelector(".game-over");
 const restartBtn = document.querySelector(".btn-restart");
+const backBtn = document.querySelector(".btn-back");
 
 // Get data from doc
 let getCategory = "";
@@ -36,6 +37,10 @@ categories.forEach((category) => {
     document.querySelector(".category-container").classList.add("to-up");
     getCategory = category.getAttribute("data-category");
   });
+});
+
+backBtn.addEventListener("click", () => {
+  document.querySelector(".category-container").classList.remove("to-up");
 });
 
 difficulties.forEach((difficulty) => {
@@ -117,6 +122,10 @@ function checkAnswer() {
   } else {
     gameOver();
   }
+
+  document.querySelector(".count").textContent = `${
+    countQuestion + 1 < 10 ? `0${countQuestion + 1}` : `${countQuestion}`
+  }/10`;
 }
 
 function getCorrectAnswerAfterChoose() {
