@@ -135,6 +135,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0.2rem;
+  cursor: pointer;
 }
 
 .difficulty-container .btn-back svg {

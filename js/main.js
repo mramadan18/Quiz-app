@@ -91,9 +91,10 @@ answerBox.forEach((ele) => {
 });
 
 function checkAnswer() {
+  console.log(correctAnswer);
   let answer = this.querySelector(".answer");
 
-  if (answer.textContent === correctAnswer) {
+  if (answer.innerHTML === correctAnswer) {
     correctNum++;
     this.classList.add("correct");
     setTimeout(() => {
@@ -124,7 +125,7 @@ function checkAnswer() {
   }
 
   document.querySelector(".count").textContent = `${
-    countQuestion + 1 < 10 ? `0${countQuestion + 1}` : `${countQuestion}`
+    countQuestion + 1 < 10 ? `0${countQuestion + 1}` : `${countQuestion + 1}`
   }/10`;
 }
 
@@ -133,7 +134,7 @@ function getCorrectAnswerAfterChoose() {
     answerBox.forEach((ele) => {
       let target = ele.querySelector(".answer");
 
-      if (target.textContent === correctAnswer) {
+      if (target.innerHTML === correctAnswer) {
         target.parentElement.classList.add("correct");
       }
 
