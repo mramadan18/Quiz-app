@@ -32,6 +32,8 @@ let correctNum = 0;
 
 let clearSetIntraver;
 
+let answerState = false;
+
 categories.forEach((category) => {
   category.addEventListener("click", () => {
     document.querySelector(".category-container").classList.add("to-up");
@@ -87,32 +89,37 @@ function showDataInPage(data) {
 }
 
 answerBox.forEach((ele) => {
-  ele.addEventListener("click", checkAnswer);
+  ele.addEventListener("click", () => {
+    if (!answerState) {
+      checkAnswer(ele);
+    }
+  });
 });
 
-function checkAnswer() {
-  console.log(correctAnswer);
-  let answer = this.querySelector(".answer");
+function checkAnswer(ele) {
+  let answer = ele.querySelector(".answer");
 
   if (answer.innerHTML === correctAnswer) {
     correctNum++;
-    this.classList.add("correct");
+    ele.classList.add("correct");
     setTimeout(() => {
-      this.classList.remove("correct");
+      ele.classList.remove("correct");
     }, 1000);
 
     setTimeout(() => {
       showDataInPage(data);
+      answerState = !answerState;
     }, 2000);
   } else {
     wrongNum++;
-    this.classList.add("wrong");
+    ele.classList.add("wrong");
     setTimeout(() => {
-      this.classList.remove("wrong");
+      ele.classList.remove("wrong");
     }, 1000);
 
     setTimeout(() => {
       showDataInPage(data);
+      answerState = !answerState;
     }, 2000);
 
     getCorrectAnswerAfterChoose();
@@ -127,6 +134,8 @@ function checkAnswer() {
   document.querySelector(".count").textContent = `${
     countQuestion + 1 < 10 ? `0${countQuestion + 1}` : `${countQuestion + 1}`
   }/10`;
+
+  answerState = !answerState;
 }
 
 function getCorrectAnswerAfterChoose() {
@@ -134,7 +143,7 @@ function getCorrectAnswerAfterChoose() {
     answerBox.forEach((ele) => {
       let target = ele.querySelector(".answer");
 
-      if (target.innerHTML === correctAnswer) {
+      if (target.textContent == correctAnswer) {
         target.parentElement.classList.add("correct");
       }
 
