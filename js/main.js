@@ -6,9 +6,10 @@ const difficulties = document.querySelectorAll(".difficulty");
 const questionHtml = document.querySelector(".question");
 const answerBox = document.querySelectorAll(".answers .col");
 const answersHtml = document.querySelectorAll(".answer");
+const totalQuestions = document.querySelector(".total-questions");
 const correctNumber = document.querySelector(".correct-num");
-const time = document.querySelector(".time");
 const wrongNumber = document.querySelector(".wrong-num");
+const time = document.querySelector(".time");
 const gameEnd = document.querySelector(".game-over");
 const restartBtn = document.querySelector(".btn-restart");
 const backBtn = document.querySelector(".btn-back");
@@ -73,7 +74,11 @@ async function getDataFromApi(API) {
 function showDataInPage(data) {
   data = data[countQuestion];
 
-  correctAnswer = data.correct_answer;
+  let myElement = document.createElement("div");
+
+  myElement.innerHTML = data.correct_answer;
+
+  correctAnswer = myElement.textContent;
 
   questionFromApi = data.question;
 
@@ -99,7 +104,7 @@ answerBox.forEach((ele) => {
 function checkAnswer(ele) {
   let answer = ele.querySelector(".answer");
 
-  if (answer.innerHTML === correctAnswer) {
+  if (answer.textContent === correctAnswer) {
     correctNum++;
     ele.classList.add("correct");
     setTimeout(() => {
@@ -109,6 +114,12 @@ function checkAnswer(ele) {
     setTimeout(() => {
       showDataInPage(data);
       answerState = !answerState;
+
+      document.querySelector(".count").textContent = `${
+        countQuestion + 1 < 10
+          ? `0${countQuestion + 1}`
+          : `${countQuestion + 1}`
+      }/10`;
     }, 2000);
   } else {
     wrongNum++;
@@ -120,6 +131,12 @@ function checkAnswer(ele) {
     setTimeout(() => {
       showDataInPage(data);
       answerState = !answerState;
+
+      document.querySelector(".count").textContent = `${
+        countQuestion + 1 < 10
+          ? `0${countQuestion + 1}`
+          : `${countQuestion + 1}`
+      }/10`;
     }, 2000);
 
     getCorrectAnswerAfterChoose();
@@ -130,10 +147,6 @@ function checkAnswer(ele) {
   } else {
     gameOver();
   }
-
-  document.querySelector(".count").textContent = `${
-    countQuestion + 1 < 10 ? `0${countQuestion + 1}` : `${countQuestion + 1}`
-  }/10`;
 
   answerState = !answerState;
 }
@@ -171,8 +184,9 @@ function endOfTime() {
 }
 
 function gameOver() {
+  totalQuestions.textContent = `Total questions: ${countQuestion + 1}`;
+  correctNumber.textContent = `Correct answer: ${correctNum}`;
   wrongNumber.textContent = `Wrong answer: ${wrongNum}`;
-  correctNumber.textContent = `Correct answer ${correctNum}`;
 
   setTimeout(() => {
     gameEnd.classList.add("end");
